@@ -1,0 +1,36 @@
+Initialize engine version: 5.2.2f1 (3757309da7e7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 570 (ID=0x1081)
+    Vendor:   NVIDIA
+    VRAM:     1233 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.076 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\System.dll (this message is harmless)
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 214 -> priority: 1 
+The referenced script on this Behaviour is missing!
+ 
+(Filename:  Line: 1649)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.483116 ms
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 216.
+Total: 0.199765 ms (FindLiveObjects: 0.022359 ms CreateObjectMapping: 0.017594 ms MarkObjects: 0.140385 ms  DeleteObjects: 0.019060 ms)
+
+Platform assembly: D:\Perso\Project_Oriana\Oriana\Test_1_Data\Managed\Boo.Lang.dll (this message is harmless)
