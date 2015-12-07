@@ -58,10 +58,21 @@ Gameplay:
 
 Interface:
 	-Menu principal
+		|-Mettre une video style payday 2 en fond
 		|-Options
-		|-Solo / Coop
-		|-Sélection du niveau
-		|-Quitter
+			|-Audio
+			|-Video
+			|-Control
+		|-Play (ok)
+			|-Solo
+				|-Continue
+				|-Select level
+				|-New Game
+			|-Coop
+				|-Continue
+				|-Select level
+				|-New Game
+		|-Quit (ok)
 	-Interface in-game
 		|-Barres de vie et d'endurance
 		|-Affichage des dégats infligés et reçus
@@ -76,7 +87,6 @@ Interface:
 	-Menu-ingame
 		|-Menu principal
 		|-Options
-		|-Sauvegarder
 		|-Quitter
 Elements extra
 	|-Fuck, Double Fuck, Triple Fuck, Multi-Fuck, Holy-Fuck (en fonction du nombre de kills enchainés rapidement, rapporte un bonus d'xp)
@@ -89,3 +99,4 @@ Elements extra
 		|-"Star du web" : réussir 3 Clique salope ! pendant que les add de Représente Clignancourt ! sont à l'écran. Faire ça un nombre conséquent
 			de fois ou dans chaque niveau ?
 	|-Des vaisseaux dorés qui passent au dessus des joueurs pour x raison (les faire ressuciter, attaquer l'adversaire, délivrer un message ?)
+	|-Support pour manettes
