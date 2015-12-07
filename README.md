@@ -19,3 +19,21 @@ La maquette doit comporter au minimum :
  -Un item qui apparait quand un joueur saute sur le bot et qui disparait quand un joueur passe dessus
 
  -Une mini cinematique avec bande son qui se declenche puis qui ramene le joueur au menu principal lorsque qu'il marche dans une zone delimitee
+
+Etape 2 - Repartition des taches
+
+-IA (js)
+
+-Histoire (papier)
+
+-Niveaux (unity)
+
+-Items (unity/js/PS)
+
+-Cinematiques (unity/js/son)
+
+-Systeme de skills, experience, niveau de joueur (unity/js/PS)
+
+-Bande sonore (audacity)
+
+-Personnages joueurs (unity/js)
