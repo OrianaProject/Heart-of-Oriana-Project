@@ -16,6 +16,6 @@ La maquette doit comporter au minimum :
 
  -Un bot (IA) capable de suivre le joueur le plus proche de lui
 
- -Un item qui apparait quand un joueur saute sur le bot et quand un joueur passe dessus
+ -Un item qui apparait quand un joueur saute sur le bot et qui disparait quand un joueur passe dessus
 
  -Une mini cinematique avec bande son qui se declenche puis qui ramene le joueur au menu principal lorsque qu'il marche dans une zone delimitee
