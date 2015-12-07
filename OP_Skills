@@ -1,12 +1,13 @@
 PLAYERS
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Sylvain Durif :
--Quetzalcoatl Strike (damage)	-> the character transform himself into a giant mythological snake for a second to hit the target with a poisonous bite.
+-Quetzalcoatl Strike (damage)		-> the character transform himself into a giant mythological snake for a second to hit the target with a poisonous bite.
 -Cosmic Light (support)			-> summon the Cosmic Christ's light to heal nearby allies and itself.
 -InVita Link (damage)			-> swap Sylvain's life bar with the target's one's. By the way, refill completely the target's endurance bar.
 -Soul Travel (utility)			-> allow Sylvain to duplicate himself in an invulnerable ghost. The copy don't aggro the foes and can move the same way as the original,
 						but this last one is immobilized during the spell and can already take aggro. Before the end of the timer, you can teleport your body
 						body to the ghost location and finish the spell.
+-Gift of double-vision (utility)	-> during a little time the next attack received is dodged.
 
 Morsay :
 -J'nique ta mere ! (utility-mobility)	-> empty the target's endurance bar after a dash on it.
@@ -16,6 +17,7 @@ Morsay :
 						and bump foes out of the area. After 1 second, if the player didn't click on one of the area (too slow
 						or too blind) Morsay take a few damages. This skill has a low cost of endurance.
 -Crochet du droit (damage)		-> strike the first ennemy in front of Morsay with more damages than a regular strike.
+-This is Sparta ! (cc-damage)		-> foot-hit the target and throw it across the map. The target stop on the first obstacle meet. More far it goes, more damages it takes.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
