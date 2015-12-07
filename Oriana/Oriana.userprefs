@@ -1,7 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player1_movement.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Camera_follow.js">
     <Files>
+      <File FileName="Assets/Scripts/Camera_follow.js" Line="31" Column="2" />
       <File FileName="Assets/Scripts/Player1_movement.js" Line="53" Column="21" />
       <File FileName="Assets/Scripts/MainMenuScript.js" Line="1" Column="1" />
     </Files>

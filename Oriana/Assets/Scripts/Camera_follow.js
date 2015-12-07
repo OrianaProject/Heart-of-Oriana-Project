@@ -13,12 +13,14 @@ function Update () {
 		this.GetComponent.<Camera>().orthographicSize = Mathf.Clamp(Vector3.Distance(Player1.transform.position, Player2.transform.position) / 2, 3.5 ,8);
 		this.transform.position = ((Player1.transform.position - Player2.transform.position) * 0.5) + Player2.transform.position;
 		this.transform.position.z = -1;
+		this.transform.position.y = -2;
 	}
 	else
 	{
 		this.GetComponent.<Camera>().orthographicSize = 4;
 		this.transform.position = Player1.transform.position;
 		this.transform.position.z = -1;
+		this.transform.position.y = -2;
 	}
 }
 
