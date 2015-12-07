@@ -15,7 +15,11 @@ function Update () {
 		this.transform.position.z = -1;
 	}
 	else
-		this.transform.position = Player1.transform.position + CamPos;
+	{
+		this.GetComponent.<Camera>().orthographicSize = 4;
+		this.transform.position = Player1.transform.position;
+		this.transform.position.z = -1;
+	}
 }
 
 function	CheckPlayer()
