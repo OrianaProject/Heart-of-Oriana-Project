@@ -6,10 +6,10 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{EF069295-1D0B-B1BA-E011-32DF5B920381}</ProjectGuid>
+	<ProjectGuid>{76956ADA-E105-85FC-F58A-FB14DDA9B2AE}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
-	<AssemblyName>Assembly-UnityScript</AssemblyName>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -45,13 +45,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\LadderScript.js" />
-     <Compile Include="Assets\Script_Animate_cam.js" />
-     <Compile Include="Assets\Scripts\Camera_follow.js" />
-     <Compile Include="Assets\Scripts\MainMenuScript.js" />
-     <Compile Include="Assets\Scripts\Movement.js" />
-     <Compile Include="Assets\Scripts\Player1_movement.js" />
-     <Compile Include="Assets\Scripts\Player2_movement.js" />
+     <Compile Include="Assets\VideoTexture.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
