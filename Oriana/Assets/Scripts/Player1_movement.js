@@ -32,7 +32,7 @@ function Update () {
 
 	if (canMove)
 	{	
-		//ladder();
+		setSpeed();
 		isGrounded();
 		isFalling();
 		LookingSide();
@@ -43,10 +43,6 @@ function Update () {
 
 function Movement()
 {
-	if (Input.GetButtonDown("Sprint_Player1") && !isCrouching)
-			Speed = 0.12;
-		if (Input.GetButtonUp("Sprint_Player1") && !isCrouching)
-			Speed = 0.08;
 		if (Input.GetButton("Horizontal_Player1"))
 		{
 			head.sprite = Face1;
@@ -54,24 +50,34 @@ function Movement()
 		}
 		if (!Input.GetButton("Horizontal_Player1") && Grounded)
 			head.sprite = Face2;
-		if (Input.GetButton("Jump_Player1") && Grounded && !onLadder && !isCrouching)
+		if (Input.GetButton("Jump_Player1") && Grounded)
 		{
 			rb.velocity = new Vector2(0,jumpForce);
 			Grounded = false;
 		}
 		
-		if (Input.GetButtonDown("Crouch_Player1"))
+		if (Input.GetButtonDown("Crouch_Player1") && Grounded)
 		{
 			Col.size.y = 0.5;
 			isCrouching = true;
-			Speed = 0.02;
 		}
 		else if (Input.GetButtonUp("Crouch_Player1") && !Physics2D.Raycast(this.transform.position + Vector2(0,0.5), Vector2.up, 0.10))
 		{
 			Col.size.y = 1;
 			isCrouching = false;
-			Speed = 0.08;
 		}
+}
+
+function setSpeed()
+{
+		if (Input.GetButtonDown("Sprint_Player1") && !isCrouching && Grounded)
+			Speed = 0.12;
+		if (Input.GetButtonUp("Sprint_Player1") && !isCrouching)
+			Speed = 0.08;
+		if (isCrouching)
+			Speed = 0.02;
+		if (!isCrouching)
+			Speed = 0.08;
 }
 
 function isFalling()
@@ -80,7 +86,12 @@ function isFalling()
 	yield;
 	var PosB = this.transform.position.y;
 	if (PosA > PosB)
+	{
+		isfalling = true;
 		head.sprite = Face3;
+	}
+	else
+		isfalling = false;
 	
 }
 
@@ -89,7 +100,6 @@ function isGrounded()
 	//Debug.DrawRay(this.transform.position + rayPos, -Vector2.up);
 	if (Physics2D.Raycast(this.transform.position + rayPos, -Vector2.up, distToGround))
 		Grounded = true;
-	//head.sprite = Face3;
 }
 
 
@@ -101,17 +111,10 @@ function LookingSide()
 		this.transform.localScale.x = scale;
 }
 
-function ladder()
-{
-	Debug.DrawRay(this.transform.position + rayPos, -Vector2.up * 0.5, Color.green);
-	
-	var hit = Physics2D.Raycast(this.transform.position + rayPos, -Vector2.up, 0.5);
-	if(hit.collider.gameObject.layer == "Ladder")
-	{
-		rb.gravityScale = 0;
-	}
-	else
-	{
-		rb.gravityScale = 1;
-	}
-}
+function OnCollisionEnter2D(collision : Collision2D)
+ {
+     if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Ladder"))
+     {
+          Debug.Log("Touched a rail");
+     }
+ }
