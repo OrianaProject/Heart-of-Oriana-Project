@@ -10,7 +10,10 @@ var rayPos : Vector2;
 private var Grounded = true;
 private var onLadder = false;
 private var isfalling = false;
+private var isCrouching = false;
+
 private var rb : Rigidbody2D;
+private var Col : BoxCollider2D;
 
 var head;
 var Face1 : Sprite;
@@ -21,6 +24,7 @@ function Start()
 {
 	head = this.transform.GetComponentInChildren.<SpriteRenderer>();
 	rb = GetComponent.<Rigidbody2D>();
+	Col = GetComponent.<BoxCollider2D>();
 	scale = this.transform.localScale.x;
 }
 
@@ -32,10 +36,16 @@ function Update () {
 		isGrounded();
 		isFalling();
 		LookingSide();
+		Movement();
+		
+	}
+}
 
-		if (Input.GetButtonDown("Sprint_Player1"))
+function Movement()
+{
+	if (Input.GetButtonDown("Sprint_Player1") && !isCrouching)
 			Speed = 0.12;
-		if (Input.GetButtonUp("Sprint_Player1"))
+		if (Input.GetButtonUp("Sprint_Player1") && !isCrouching)
 			Speed = 0.08;
 		if (Input.GetButton("Horizontal_Player1"))
 		{
@@ -44,12 +54,24 @@ function Update () {
 		}
 		if (!Input.GetButton("Horizontal_Player1") && Grounded)
 			head.sprite = Face2;
-		if (Input.GetButton("Jump_Player1") && Grounded && !onLadder)
+		if (Input.GetButton("Jump_Player1") && Grounded && !onLadder && !isCrouching)
 		{
 			rb.velocity = new Vector2(0,jumpForce);
 			Grounded = false;
 		}
-	}
+		
+		if (Input.GetButtonDown("Crouch_Player1"))
+		{
+			Col.size.y = 0.5;
+			isCrouching = true;
+			Speed = 0.02;
+		}
+		else if (Input.GetButtonUp("Crouch_Player1") && !Physics2D.Raycast(this.transform.position + Vector2(0,0.5), Vector2.up, 0.10))
+		{
+			Col.size.y = 1;
+			isCrouching = false;
+			Speed = 0.08;
+		}
 }
 
 function isFalling()
