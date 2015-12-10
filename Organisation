@@ -20,8 +20,10 @@ Ressources graphiques et audio:
 		|-de combat
 		|-de mort
 	-Bruitages
+		|-Subis des dégats
+		|-Atterissage (après chute ou saut)
 		|-pas (marche)
-		|-regular attck (spécifique au personnage)
+		|-regular attack (spécifique au personnage)
 		|-special attack
 		|-click des boutons du menu et de l'interface
 		|-items (rechargement du pistolet, tir, coup de batte, couinement de vélo)
