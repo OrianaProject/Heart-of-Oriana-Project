@@ -17,16 +17,26 @@ function Update () {
 	}
 	else
 	{
-		this.GetComponent.<Camera>().orthographicSize = 4;
-		this.transform.position = Player1.transform.position;
-		this.transform.position.z = -1;
-		this.transform.position.y = -2;
+		if(GameObject.Find("Player1"))
+		{
+			this.GetComponent.<Camera>().orthographicSize = 4;
+			this.transform.position = Player1.transform.position;
+			this.transform.position.z = -1;
+			this.transform.position.y = -2;
+		}
+		else if(GameObject.Find("Player2"))
+		{
+			this.GetComponent.<Camera>().orthographicSize = 4;
+			this.transform.position = Player2.transform.position;
+			this.transform.position.z = -1;
+			this.transform.position.y = -2;
+		}
 	}
 }
 
 function	CheckPlayer()
 {
-	if(GameObject.Find("Player2"))
+	if(GameObject.Find("Player1") && GameObject.Find("Player2"))
 		coop = true;
 	else
 		coop = false;

@@ -56,7 +56,7 @@ function Movement()
 			Grounded = false;
 		}
 		
-		if (Input.GetButtonDown("Crouch_Player1") && Grounded)
+		if (Input.GetButtonDown("Crouch_Player1"))
 		{
 			Col.size.y = 0.5;
 			isCrouching = true;
