@@ -23,17 +23,11 @@ La maquette doit comporter au minimum :
 Etape 2 - Repartition des taches
 
 -IA (js)
-
 -Histoire (papier)
-
 -Niveaux (unity)
-
 -Items (unity/js/PS)
-
 -Cinematiques (unity/js/son)
-
 -Systeme de skills, experience, niveau de joueur (unity/js/PS)
-
 -Bande sonore (audacity)
-
 -Personnages joueurs (unity/js)
+-Interface
