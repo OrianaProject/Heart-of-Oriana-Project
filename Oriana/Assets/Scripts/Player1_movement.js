@@ -46,10 +46,8 @@ function Update () {
 		Application.LoadLevel("Game1");
 	if (Input.GetButtonDown("Screenshot"))
 	{
-		checkHealth(-1);
-		Debug.Log("-1");
-	 	//Application.CaptureScreenshot("Screenshot.png");
-		//Debug.Log("SCREEN !");
+	 	Application.CaptureScreenshot("Screenshot.png");
+		Debug.Log("SCREEN !");
 	}
 	health_bar.gameObject.GetComponent("Slider").value = hp;
 }
