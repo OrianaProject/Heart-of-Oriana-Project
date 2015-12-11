@@ -40,6 +40,12 @@ function Update () {
 		Movement();
 		
 	}
+	
+	if (Input.GetButtonDown("Screenshot"))
+	{
+	 	Application.CaptureScreenshot("Screenshot.png");
+		Debug.Log("SCREEN !");
+	}
 }
 
 function Movement()
@@ -77,11 +83,11 @@ function setSpeed()
 		if (Input.GetButtonDown("Sprint_Player1") && !isCrouching && Grounded)
 			Speed = 0.12;
 		if (Input.GetButtonUp("Sprint_Player1") && !isCrouching)
-			Speed = 0.08;
+			Speed = 0.05;
 		if (isCrouching)
 			Speed = 0.02;
 		if (!isCrouching)
-			Speed = 0.08;
+			Speed = 0.05;
 }
 
 function isFalling()
@@ -105,6 +111,8 @@ function isGrounded()
 	//Debug.DrawRay(this.transform.position + rayPos, -Vector2.up);
 	if (Physics2D.Raycast(this.transform.position + rayPos, -Vector2.up, distToGround))
 		Grounded = true;
+	if (!(Physics2D.Raycast(this.transform.position + rayPos, -Vector2.up, distToGround)))
+		Grounded = false;
 }
 
 
