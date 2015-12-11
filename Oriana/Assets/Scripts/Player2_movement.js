@@ -1,18 +1,22 @@
 ﻿var canMove = true;
 var hp = 15;
+var end = 100.0;
 
 var Speed = 0.2;
 var scale;
+var TimeA = 0.00;
 
 var jumpForce = 0.0;
 var distToGround = 0.01;
 var rayPos : Vector2;
 var health_bar : GameObject;
+var end_bar : GameObject;
 
 private var Grounded = true;
 private var onLadder = false;
 private var isfalling = false;
 private var isCrouching = false;
+private var Moving = false;
 
 private var rb : Rigidbody2D;
 private var Col : BoxCollider2D;
@@ -37,19 +41,24 @@ function Update () {
 		setSpeed();
 		Movement();
 		isGrounded();
+		isMoving();
 		isFalling();
 		LookingSide();
+		checkEnd(0);
 		
 	}
 	
+	if (Input.GetKey(KeyCode.R))
+		Application.LoadLevel("Game1");
 	if (Input.GetButtonDown("Screenshot"))
 	{
-		checkHealth(-1);
-		Debug.Log("-1");
+		checkEnd(-5);
 	 	//Application.CaptureScreenshot("Screenshot.png");
 		//Debug.Log("SCREEN !");
 	}
+	
 	health_bar.gameObject.GetComponent("Slider").value = hp;
+	end_bar.gameObject.GetComponent("Slider").value = end;
 }
 
 function Movement()
@@ -82,8 +91,6 @@ function Movement()
 		
 		if (Input.GetButton("Vertical_Player2") && onLadder)
 			this.transform.position.y += Mathf.Clamp(Input.GetAxis("Vertical_Player2"), -Speed, Speed);
-		if (Input.GetKey(KeyCode.R))
-			Application.LoadLevel("Game1");
 }
 
 function setSpeed()
@@ -112,6 +119,14 @@ function isFalling()
 	else
 		isfalling = false;
 	
+}
+
+function isMoving()
+{
+	var PosA = this.transform.position.x;
+	yield;
+	var PosB = this.transform.position.x;
+	Moving = (PosA != PosB) ? true : false;	
 }
 
 function isGrounded()
@@ -160,4 +175,21 @@ function OnTriggerEnter2D(col : Collider2D)
  	
  	if (this.hp <= -1)
  		Destroy(this.gameObject);
+ }
+ 
+ function checkEnd(nb)
+ {
+ 	TimeA += 0.015;
+ 	if (Input.GetButton("Sprint_Player2"))
+ 	 	TimeA = 0.00;
+ 	if (nb)
+ 		end += nb;	
+ 	else if (Input.GetButton("Sprint_Player2") && Moving && end > 0)
+ 		end -= 0.25;
+ 	if (TimeA >= 1 && end < 100.0)
+ 	{
+ 		Debug.Log("Recharge");
+ 		end += 0.1;
+ 	}
+
  }
