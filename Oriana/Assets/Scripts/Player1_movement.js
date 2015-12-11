@@ -7,6 +7,7 @@ var scale;
 var jumpForce = 0.0;
 var distToGround = 0.01;
 var rayPos : Vector2;
+var health_bar : GameObject;
 
 private var Grounded = true;
 private var onLadder = false;
@@ -41,6 +42,8 @@ function Update () {
 		
 	}
 	
+	if (Input.GetKey(KeyCode.R))
+		Application.LoadLevel("Game1");
 	if (Input.GetButtonDown("Screenshot"))
 	{
 		checkHealth(-1);
@@ -48,6 +51,7 @@ function Update () {
 	 	//Application.CaptureScreenshot("Screenshot.png");
 		//Debug.Log("SCREEN !");
 	}
+	health_bar.gameObject.GetComponent("Slider").value = hp;
 }
 
 function Movement()
@@ -146,10 +150,14 @@ function OnTriggerEnter2D(col : Collider2D)
      }
  }
  
- function checkHealth(nb)
+ function checkHealth(nb : int)
  {
+ 	if (nb < 0)
+ 		Debug.Log(this.gameObject.name + " a perdu " + (-nb) + " pv.");
+ 	else if (nb > 0)
+ 		Debug.Log(this.gameObject.name + " a gagne " + (nb) + " pv.");
  	this.hp += nb;
  	
- 	if (this.hp <= 0)
+ 	if (this.hp <= -1)
  		Destroy(this.gameObject);
  }

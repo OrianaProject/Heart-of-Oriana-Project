@@ -1,10 +1,13 @@
-﻿var rb : Rigidbody2D;
+﻿private var rb : Rigidbody2D;
 var hit : RaycastHit[];
+
 private var p1 : GameObject;
 private var p2 : GameObject;
+var item : GameObject;
 
 
 var Speed = 1.00;
+var hp = 15;
 
 function Start()
 {
@@ -42,4 +45,24 @@ function followPlayer()
 		moveToPlayer(p1);
 	else if (!p1 && p2)
 		moveToPlayer(p2);
+}
+
+function OnCollisionEnter2D(col : Collision2D) {
+		
+		var direction = transform.InverseTransformPoint (col.transform.position);
+        if (direction.y > 0f && col.gameObject.tag == "Player")
+        {
+        	dropItem();
+			Destroy(this.gameObject);
+		}
+		else if (direction.y < 0f && col.gameObject.tag == "Player")
+			col.gameObject.SendMessage("checkHealth", -1);
+
+
+}
+
+function dropItem()
+{
+	var tem = Instantiate(item, transform.position, transform.rotation);
+	tem.transform.position.x += 1;
 }

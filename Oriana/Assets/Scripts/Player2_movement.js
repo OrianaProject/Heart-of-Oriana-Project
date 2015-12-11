@@ -1,4 +1,5 @@
 ﻿var canMove = true;
+var hp = 15;
 
 var Speed = 0.2;
 var scale;
@@ -6,6 +7,7 @@ var scale;
 var jumpForce = 0.0;
 var distToGround = 0.01;
 var rayPos : Vector2;
+var health_bar : GameObject;
 
 private var Grounded = true;
 private var onLadder = false;
@@ -32,14 +34,22 @@ function Update () {
 
 	if (canMove)
 	{	
-		
 		setSpeed();
+		Movement();
 		isGrounded();
 		isFalling();
 		LookingSide();
-		Movement();
 		
 	}
+	
+	if (Input.GetButtonDown("Screenshot"))
+	{
+		checkHealth(-1);
+		Debug.Log("-1");
+	 	//Application.CaptureScreenshot("Screenshot.png");
+		//Debug.Log("SCREEN !");
+	}
+	health_bar.gameObject.GetComponent("Slider").value = hp;
 }
 
 function Movement()
@@ -61,27 +71,31 @@ function Movement()
 		{
 			Col.size.y = 0.5;
 			isCrouching = true;
+			Speed = 0.02;
 		}
 		else if (Input.GetButtonUp("Crouch_Player2") && !Physics2D.Raycast(this.transform.position + Vector2(0,0.5), Vector2.up, 0.10))
 		{
 			Col.size.y = 1;
 			isCrouching = false;
+			Speed = 0.05;
 		}
 		
 		if (Input.GetButton("Vertical_Player2") && onLadder)
 			this.transform.position.y += Mathf.Clamp(Input.GetAxis("Vertical_Player2"), -Speed, Speed);
+		if (Input.GetKey(KeyCode.R))
+			Application.LoadLevel("Game1");
 }
 
 function setSpeed()
 {
-		if (Input.GetButtonDown("Sprint_Player2") && !isCrouching)
-			Speed = 0.12;
-		if (Input.GetButtonUp("Sprint_Player2") && !isCrouching)
+		if (Input.GetButtonDown("Sprint_Player2") && !onLadder)
+			Speed = 0.09;
+		if (Input.GetButtonUp("Sprint_Player2"))
 			Speed = 0.05;
-		if (isCrouching)
+		if (isCrouching && Grounded)
 			Speed = 0.02;
-		if (!isCrouching)
-			Speed = 0.05;
+		/*if (!isCrouching && Grounded)
+			Speed = 0.05;*/
 }
 
 function isFalling()
@@ -134,4 +148,16 @@ function OnTriggerEnter2D(col : Collider2D)
      		onLadder = false;
           	rb.isKinematic = false;
      }
+ }
+ 
+ function checkHealth(nb : int)
+ {
+ 	if (nb < 0)
+ 		Debug.Log(this.gameObject.name + " a perdu " + (-nb) + " pv.");
+ 	else if (nb > 0)
+ 		Debug.Log(this.gameObject.name + " a gagne " + (nb) + " pv.");
+ 	this.hp += nb;
+ 	
+ 	if (this.hp <= -1)
+ 		Destroy(this.gameObject);
  }
