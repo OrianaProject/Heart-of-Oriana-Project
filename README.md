@@ -1,7 +1,7 @@
 # Project_Oriana
 The Heart of the project that the Great Prophet gave us to build to show the world how mighty and aware he really is.
 
-Etape 1 - Maquette
+Phase 1 - Maquette
 
 Conception d'une premiere maquette permettant de fixer les techniques utilisees et les differents choix.
 La maquette doit comporter au minimum :
@@ -20,8 +20,15 @@ La maquette doit comporter au minimum :
 
  -Une mini cinematique avec bande son qui se declenche puis qui ramene le joueur au menu principal lorsque qu'il marche dans une zone delimitee
 
-Etape 2 - Repartition des taches
 
+
+Phase 2 - Conception - Etape par etape, repartition des taches pour chacune d'elles.
+
+-Histoire : redaction succinte de l'histoire du mode campagne, des evenements importants et des differents protagonistes, et de l'influence que le joueur peut avoir sur le deroulement des evenements.
+
+-Niveaux : liens avec l'histoire, definition des bots (conception theorique uniquement : leurs emplacements, leurs actions, leurs items, etc.), environement et geographie (elements interactibles, nivelement, etc.), textures et bande sonore.
+
+/*
 -IA (js)
 
 -Histoire (papier)
@@ -39,3 +46,4 @@ Etape 2 - Repartition des taches
 -Personnages joueurs (unity/js)
 
 -Interface
+*/
