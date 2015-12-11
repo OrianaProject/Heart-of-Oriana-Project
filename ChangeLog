@@ -10,6 +10,8 @@
 
  + Ajout des mouvements de base
  	|- Ajout de la position Accroupi
+	|- Ajout de l'action "Echelle"
  + Ajout de caméra solo/coop
  + Ajout d'un menu de Base
  	|- Ajout d'un background anime
+	|- Ajout d'un fond sonore

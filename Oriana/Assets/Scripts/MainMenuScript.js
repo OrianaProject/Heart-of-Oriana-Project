@@ -6,8 +6,7 @@ var page_3_1 : Transform; // Audio Page
 var page_3_2 : Transform; // Video Page
 var page_3_3 : Transform; // Controls Page
 var page_4_0 : Transform; // Quit Page
-
-var Level : Transform[]; 
+ 
 
 var PosA : Transform;
 var PosB : Transform;

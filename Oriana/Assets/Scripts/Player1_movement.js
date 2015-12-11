@@ -32,6 +32,7 @@ function Update () {
 
 	if (canMove)
 	{	
+		
 		setSpeed();
 		isGrounded();
 		isFalling();
@@ -50,7 +51,7 @@ function Movement()
 		}
 		if (!Input.GetButton("Horizontal_Player1") && Grounded)
 			head.sprite = Face2;
-		if (Input.GetButton("Jump_Player1") && Grounded)
+		if (Input.GetButton("Jump_Player1") && Grounded && !onLadder)
 		{
 			rb.velocity = new Vector2(0,jumpForce);
 			Grounded = false;
@@ -66,6 +67,9 @@ function Movement()
 			Col.size.y = 1;
 			isCrouching = false;
 		}
+		
+		if (Input.GetButton("Vertical_Player1") && onLadder)
+			this.transform.position.y += Mathf.Clamp(Input.GetAxis("Vertical_Player1"), -Speed, Speed);
 }
 
 function setSpeed()
@@ -88,7 +92,8 @@ function isFalling()
 	if (PosA > PosB)
 	{
 		isfalling = true;
-		head.sprite = Face3;
+		if (!onLadder)
+			head.sprite = Face3;
 	}
 	else
 		isfalling = false;
@@ -111,10 +116,20 @@ function LookingSide()
 		this.transform.localScale.x = scale;
 }
 
-function OnCollisionEnter2D(collision : Collision2D)
+function OnTriggerEnter2D(col : Collider2D)
  {
-     if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Ladder"))
+     if (col.gameObject.layer == LayerMask.NameToLayer("Ladder"))
      {
-          Debug.Log("Touched a rail");
+     		onLadder = true;
+          	rb.isKinematic = true;
+     }
+ }
+ 
+ function OnTriggerExit2D(col : Collider2D)
+ {
+     if (col.gameObject.layer == LayerMask.NameToLayer("Ladder"))
+     {
+     		onLadder = false;
+          	rb.isKinematic = false;
      }
  }
