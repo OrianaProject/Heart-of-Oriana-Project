@@ -1,4 +1,5 @@
 ﻿var canMove = true;
+var hp = 15;
 
 var Speed = 0.2;
 var scale;
@@ -32,19 +33,20 @@ function Update () {
 
 	if (canMove)
 	{	
-		
 		setSpeed();
+		Movement();
 		isGrounded();
 		isFalling();
 		LookingSide();
-		Movement();
 		
 	}
 	
 	if (Input.GetButtonDown("Screenshot"))
 	{
-	 	Application.CaptureScreenshot("Screenshot.png");
-		Debug.Log("SCREEN !");
+		checkHealth(-1);
+		Debug.Log("-1");
+	 	//Application.CaptureScreenshot("Screenshot.png");
+		//Debug.Log("SCREEN !");
 	}
 }
 
@@ -67,11 +69,13 @@ function Movement()
 		{
 			Col.size.y = 0.5;
 			isCrouching = true;
+			Speed = 0.02;
 		}
 		else if (Input.GetButtonUp("Crouch_Player1") && !Physics2D.Raycast(this.transform.position + Vector2(0,0.5), Vector2.up, 0.10))
 		{
 			Col.size.y = 1;
 			isCrouching = false;
+			Speed = 0.05;
 		}
 		
 		if (Input.GetButton("Vertical_Player1") && onLadder)
@@ -80,14 +84,14 @@ function Movement()
 
 function setSpeed()
 {
-		if (Input.GetButtonDown("Sprint_Player1") && !isCrouching && Grounded)
-			Speed = 0.12;
-		if (Input.GetButtonUp("Sprint_Player1") && !isCrouching)
+		if (Input.GetButtonDown("Sprint_Player1") && !onLadder)
+			Speed = 0.09;
+		if (Input.GetButtonUp("Sprint_Player1"))
 			Speed = 0.05;
-		if (isCrouching)
+		if (isCrouching && Grounded)
 			Speed = 0.02;
-		if (!isCrouching)
-			Speed = 0.05;
+		/*if (!isCrouching && Grounded)
+			Speed = 0.05;*/
 }
 
 function isFalling()
@@ -140,4 +144,12 @@ function OnTriggerEnter2D(col : Collider2D)
      		onLadder = false;
           	rb.isKinematic = false;
      }
+ }
+ 
+ function checkHealth(nb)
+ {
+ 	this.hp += nb;
+ 	
+ 	if (this.hp <= 0)
+ 		Destroy(this.gameObject);
  }

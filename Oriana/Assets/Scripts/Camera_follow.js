@@ -10,7 +10,7 @@ function Update () {
 
 	if(coop)
 	{
-		this.GetComponent.<Camera>().orthographicSize = Mathf.Clamp(Vector3.Distance(Player1.transform.position, Player2.transform.position) / 2, 3.5 ,8);
+		this.GetComponent.<Camera>().orthographicSize = Mathf.Clamp((Player1.transform.position.x - Player2.transform.position.x) / 2, 3.5 ,8);
 		this.transform.position = ((Player1.transform.position - Player2.transform.position) * 0.5) + Player2.transform.position;
 		this.transform.position.z = -1;
 		this.transform.position.y = -1.5;

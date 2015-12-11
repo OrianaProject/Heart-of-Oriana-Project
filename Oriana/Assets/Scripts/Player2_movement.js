@@ -74,14 +74,14 @@ function Movement()
 
 function setSpeed()
 {
-		if (Input.GetButtonDown("Sprint_Player2") && !isCrouching && Grounded)
+		if (Input.GetButtonDown("Sprint_Player2") && !isCrouching)
 			Speed = 0.12;
 		if (Input.GetButtonUp("Sprint_Player2") && !isCrouching)
-			Speed = 0.08;
+			Speed = 0.05;
 		if (isCrouching)
 			Speed = 0.02;
 		if (!isCrouching)
-			Speed = 0.08;
+			Speed = 0.05;
 }
 
 function isFalling()
