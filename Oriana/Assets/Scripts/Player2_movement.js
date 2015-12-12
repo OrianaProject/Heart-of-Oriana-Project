@@ -1,4 +1,4 @@
-﻿var canMove = true;
+﻿static var canMove = true;
 var hp = 15;
 var end = 100.0;
 
@@ -95,7 +95,7 @@ function Movement()
 
 function setSpeed()
 {
-		if (Input.GetButtonDown("Sprint_Player2") && !onLadder)
+		if (Input.GetButtonDown("Sprint_Player2") && !onLadder && end > 0)
 			Speed = 0.09;
 		if (Input.GetButtonUp("Sprint_Player2"))
 			Speed = 0.05;
