@@ -47,18 +47,20 @@ function followPlayer()
 		moveToPlayer(p2);
 }
 
-function OnCollisionEnter2D(col : Collision2D) {
+function OnCollisionStay2D(col : Collision2D) {
 		
 		var direction = transform.InverseTransformPoint (col.transform.position);
-        if (direction.y > 0f && col.gameObject.tag == "Player")
+        
+        /*if (direction.y > 0f && col.gameObject.tag == "Player")
         {
         	dropItem();
 			Destroy(this.gameObject);
-		}
-		else if (direction.y < 0f && col.gameObject.tag == "Player")
+		}*/
+		if ((direction.y < 0f || direction.x > 0f || direction.x < 0f) && col.gameObject.tag == "Player")
+		{	
+			
 			col.gameObject.SendMessage("checkHealth", -1);
-
-
+		}
 }
 
 function dropItem()

@@ -1,6 +1,6 @@
 ﻿static var canMove = true;
-var hp = 15;
-var end = 100.0;
+static var hp = 15;
+static var end = 100.0;
 
 var Speed = 0.2;
 var scale;
@@ -18,7 +18,7 @@ private var isfalling = false;
 private var isCrouching = false;
 private var Moving = false;
 
-private var rb : Rigidbody2D;
+static var rb : Rigidbody2D;
 private var Col : BoxCollider2D;
 
 var head;
@@ -56,7 +56,7 @@ function Update () {
 	 	//Application.CaptureScreenshot("Screenshot.png");
 		//Debug.Log("SCREEN !");
 	}
-	
+	 //transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraRect .xMin, cameraRect .xMax),Mathf.Clamp(transform.position.y, cameraRect .yMin, cameraRect .yMax),transform.position.z);
 	health_bar.gameObject.GetComponent("Slider").value = hp;
 	end_bar.gameObject.GetComponent("Slider").value = end;
 }
@@ -147,6 +147,7 @@ function LookingSide()
 		this.transform.localScale.x = scale;
 }
 
+
 function OnTriggerEnter2D(col : Collider2D)
  {
      if (col.gameObject.layer == LayerMask.NameToLayer("Ladder"))
@@ -164,16 +165,36 @@ function OnTriggerEnter2D(col : Collider2D)
           	rb.isKinematic = false;
      }
  }
+
+ function OnCollisionEnter2D(col : Collision2D) {
+		
+		var direction = transform.InverseTransformPoint (col.transform.position);
+        if (direction.y > 0f && col.gameObject.tag == "Enemy")
+        {
+			rb.velocity = new Vector2(jumpForce,jumpForce);
+			
+		}
+		else if (direction.y < 0f && col.gameObject.tag == "Enemy")
+			rb.velocity = new Vector2(-jumpForce,jumpForce);
+
+
+}
+
  
  function checkHealth(nb : int)
  {
- 	if (nb < 0)
+ 	Debug.Log(hp);
+ 	if (nb < 0){
  		Debug.Log(this.gameObject.name + " a perdu " + (-nb) + " pv.");
+ 		rb.velocity = new Vector2(3,jumpForce);
+ 		}
  	else if (nb > 0)
  		Debug.Log(this.gameObject.name + " a gagne " + (nb) + " pv.");
  	this.hp += nb;
  	
- 	if (this.hp <= -1)
+ 	if (hp > 15)
+ 		hp = 15;
+ 	if (hp <= -1)
  		Destroy(this.gameObject);
  }
  
@@ -187,9 +208,6 @@ function OnTriggerEnter2D(col : Collider2D)
  	else if (Input.GetButton("Sprint_Player1") && Moving && end > 0)
  		end -= 0.25;
  	if (TimeA >= 1 && end < 100.0)
- 	{
- 		Debug.Log("Recharge");
  		end += 0.1;
- 	}
 
  }

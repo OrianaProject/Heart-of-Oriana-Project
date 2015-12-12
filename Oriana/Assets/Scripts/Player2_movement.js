@@ -1,4 +1,6 @@
 ﻿static var canMove = true;
+static var rb : Rigidbody2D;
+
 var hp = 15;
 var end = 100.0;
 
@@ -18,7 +20,6 @@ private var isfalling = false;
 private var isCrouching = false;
 private var Moving = false;
 
-private var rb : Rigidbody2D;
 private var Col : BoxCollider2D;
 
 var head;
@@ -165,10 +166,22 @@ function OnTriggerEnter2D(col : Collider2D)
      }
  }
  
+/*
+function OnCollisionEnter2D(col : Collision2D) {
+		
+	var direction = transform.InverseTransformPoint (col.transform.position);
+       if (direction.y > 0f && col.gameObject.tag == "Enemy")
+		rb.velocity = new Vector2(3,jumpForce);	
+	else if (direction.y < 0f && col.gameObject.tag == "Enemy")
+		rb.velocity = new Vector2(-3,jumpForce);
+}*/
+ 
  function checkHealth(nb : int)
  {
- 	if (nb < 0)
+ 	if (nb < 0){
  		Debug.Log(this.gameObject.name + " a perdu " + (-nb) + " pv.");
+ 		rb.velocity = new Vector2(3,jumpForce);
+ 		}
  	else if (nb > 0)
  		Debug.Log(this.gameObject.name + " a gagne " + (nb) + " pv.");
  	this.hp += nb;
