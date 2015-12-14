@@ -44,6 +44,6 @@ function movePlayer()
 			isMoved = true;
 			//Player1_movement.rb.velocity = new Vector2(0,5);
 			//Player2_movement.rb.velocity = new Vector2(0,5);
-			ovni.GetComponent.<Animation>().Play("Ovni_Come");
+			ovni.GetComponent.<Animator>().Play("Ovni_Come");
 		}
 }

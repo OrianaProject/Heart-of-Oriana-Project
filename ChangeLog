@@ -8,6 +8,8 @@
  Version 1.00
  -----------------------------------------------------------
 
+/*(Creation de la maquette )*\
+
  + Ajout des mouvements de base
  	|- Ajout de la position Accroupi
 	|- Ajout de l'action "Echelle"
@@ -16,3 +18,7 @@
  	|- Ajout d'un background anime
 	|- Ajout d'un fond sonore
  + Ajout d'une barre de vie
+ + Ajout d'une barre d'endurance
+
+ Version 1.01
+ -----------------------------------------------------------
