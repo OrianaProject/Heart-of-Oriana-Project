@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Moving_Plateform.js">
     <Files>
-      <File FileName="Assets/Scripts/EndLevelScript.js" Line="37" Column="3" />
+      <File FileName="Assets/Moving_Plateform.js" Line="43" Column="3" />
+      <File FileName="Assets/Scripts/EndLevelScript.js" Line="1" Column="1" />
       <File FileName="../../../../Volumes/Data/nfs/zfs-student-2/users/bngo/Documents/Project_Oriana/Oriana/Assets/Scripts/Player1_movement.js" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Player1_movement.js" Line="1" Column="1" />
-      <File FileName="Assets/Moving_Plateform.js" Line="16" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
