@@ -1,25 +1,32 @@
-﻿var Key : Transform [];
+﻿var Key : Transform;
 var Plateform : Transform;
 
 var Current_Key = 1;
 var step = 0.00;
+var Speed = 1.0;
 var goForward = true;
+
+function Start()
+{
+	Plateform.transform.position = Key.GetChild(Current_Key).transform.position;
+}
 
 function Update () {
 
 	movePlateform();
 	oneDirection();
+	debugPath();
 
 }
 
 function movePlateform()
 {
-	if (Vector2.Distance(Plateform.transform.position, Key[Current_Key].transform.position) > 0.1)
+	if (Vector2.Distance(Plateform.transform.position, Key.GetChild(Current_Key).transform.position) > 0.1)
 	{
-		step += 0.001;
-		Plateform.transform.position = Vector2.Lerp(Plateform.transform.position, Key[Current_Key].transform.position, step);
+		step += Speed * 0.0001;
+		Plateform.transform.position = Vector2.Lerp(Plateform.transform.position, Key.GetChild(Current_Key).transform.position, step);
 	}
-	if (Vector2.Distance(Plateform.transform.position, Key[Current_Key].transform.position) < 0.1)
+	if (Vector2.Distance(Plateform.transform.position, Key.GetChild(Current_Key).transform.position) < 0.1)
 	{
 		step = 0.00;
 		if (goForward)
@@ -31,14 +38,16 @@ function movePlateform()
 
 function oneDirection()
 {
-	if (goForward && (Current_Key + 1) >= Key.Length)
+	if (goForward && (Current_Key + 1) >= Key.childCount)
 			goForward = false;
 	else if (!goForward && (Current_Key - 1) < 0)
 			goForward = true;
 }
 
-function OnTriggerEnter2D(Col : Collision2D)
+function debugPath()
 {
-	if(Col.gameObject.tag == "Player")
-		Col.transform.parent = this.transform;
+	for (var i = 0; i < (Key.childCount - 1); i++)
+	{
+		Debug.DrawLine(Key.GetChild(i).transform.position,Key.GetChild(i + 1).transform.position, Color.red);
+	}
 }

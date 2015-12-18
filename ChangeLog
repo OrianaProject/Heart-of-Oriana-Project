@@ -10,6 +10,7 @@
 
 /*(Creation de la maquette )*\
 
+ + Ajout de plateformes 
  + Ajout des mouvements de base
  	|- Ajout de la position Accroupi
 	|- Ajout de l'action "Echelle"

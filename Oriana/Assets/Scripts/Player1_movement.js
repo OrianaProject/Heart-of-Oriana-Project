@@ -155,6 +155,9 @@ function OnTriggerEnter2D(col : Collider2D)
      		onLadder = true;
           	rb.isKinematic = true;
      }
+     if (col.gameObject.layer == LayerMask.NameToLayer("Plateform"))
+     	transform.parent = col.transform;
+     
  }
  
  function OnTriggerExit2D(col : Collider2D)
@@ -164,6 +167,9 @@ function OnTriggerEnter2D(col : Collider2D)
      		onLadder = false;
           	rb.isKinematic = false;
      }
+     if (col.gameObject.layer == LayerMask.NameToLayer("Plateform"))
+     	transform.parent = null;
+
  }
 
  function OnCollisionEnter2D(col : Collision2D) {
