@@ -1,4 +1,6 @@
-﻿var Key : Transform;
+﻿var canMove = true;
+
+var Key : Transform;
 var Obj : Transform;
 
 var Current_Key = 1;
@@ -13,10 +15,12 @@ function Start()
 
 function Update () {
 
-	moveObj();
-	oneDirection();
-	debugPath();
-
+	if (canMove)
+	{
+		moveObj();
+		oneDirection();
+		debugPath();
+	}
 }
 
 
