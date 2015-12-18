@@ -1,5 +1,5 @@
 ﻿var Key : Transform;
-var Plateform : Transform;
+var Obj : Transform;
 
 var Current_Key = 1;
 var step = 0.00;
@@ -8,25 +8,35 @@ var goForward = true;
 
 function Start()
 {
-	Plateform.transform.position = Key.GetChild(Current_Key).transform.position;
+	Obj.transform.position = Key.GetChild(Current_Key).transform.position;
 }
 
 function Update () {
 
-	movePlateform();
+	moveObj();
 	oneDirection();
 	debugPath();
 
 }
 
-function movePlateform()
+
+function debugPath()
 {
-	if (Vector2.Distance(Plateform.transform.position, Key.GetChild(Current_Key).transform.position) > 0.1)
+	for (var i = 0; i < (Key.childCount - 1); i++)
+	{
+		Debug.DrawLine(Key.GetChild(i).transform.position,Key.GetChild(i + 1).transform.position, Color.red);
+	}
+}
+
+
+function moveObj()
+{
+	if (Vector2.Distance(Obj.transform.position, Key.GetChild(Current_Key).transform.position) > 0.1)
 	{
 		step += Speed * 0.0001;
-		Plateform.transform.position = Vector2.Lerp(Plateform.transform.position, Key.GetChild(Current_Key).transform.position, step);
+		Obj.transform.position = Vector2.Lerp(Obj.transform.position, Key.GetChild(Current_Key).transform.position, step);
 	}
-	if (Vector2.Distance(Plateform.transform.position, Key.GetChild(Current_Key).transform.position) < 0.1)
+	if (Vector2.Distance(Obj.transform.position, Key.GetChild(Current_Key).transform.position) < 0.1)
 	{
 		step = 0.00;
 		if (goForward)
@@ -42,12 +52,4 @@ function oneDirection()
 			goForward = false;
 	else if (!goForward && (Current_Key - 1) < 0)
 			goForward = true;
-}
-
-function debugPath()
-{
-	for (var i = 0; i < (Key.childCount - 1); i++)
-	{
-		Debug.DrawLine(Key.GetChild(i).transform.position,Key.GetChild(i + 1).transform.position, Color.red);
-	}
 }
