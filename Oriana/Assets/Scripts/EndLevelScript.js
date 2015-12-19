@@ -1,5 +1,6 @@
 ﻿private var isInside = false;
 private var isMoved = false;
+private var canChangeLvl = false;
 
 var Speed = 0.05;
 var MaxDist = 0;
@@ -23,6 +24,8 @@ function Update()
 {
 	if (isInside)
 		movePlayer();
+	if (Input.GetButton("Jump_Player1") && canChangeLvl)
+		Application.LoadLevel(Application.loadedLevel + 1);
 
 }
 
@@ -59,12 +62,17 @@ function movePlayer()
 			if (Camera.main.rect.width >= 0.50)
 				Camera.main.rect.width -= 0.01;
 			if (Camera.main.rect.width <= 0.50)
+			{
 				end_Box_content.SetActive(true);
+				canChangeLvl = true;
+			}
 			if (timer >= 5.00)
 			{
 				timer = 0.00;
-				Player1_movement.rb.velocity = new Vector2(0,5);
-				Player2_movement.rb.velocity = new Vector2(0,5);
+				if (P1)
+					Player1_movement.rb.velocity = new Vector2(0,5);
+				if (P2)
+					Player2_movement.rb.velocity = new Vector2(0,5);
 			}
 		}
 }
