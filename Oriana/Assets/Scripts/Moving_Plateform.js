@@ -1,7 +1,4 @@
-﻿@script ExecuteInEditMode()
-@Tooltip ("Health value between 0 and 100.")
-
-var canMove = true;
+﻿var canMove = true;
 var jumpToFirst = false;
 var loop = false;
 var goForward = true;
@@ -32,7 +29,7 @@ function Update () {
 	}
 	if (jumpToFirst && loop)
 	{
-		Debug.Log("Va niquer ta mere !");
+		EditorUtility.DisplayDialog("OK TAMER","Va Niquer ta mere, je peux pas faire les deux en meme temps fdp !", "ok c'est bon, je savais pas");
 		jumpToFirst = false;
 	}
 	debugPath();
@@ -47,7 +44,7 @@ function debugPath()
 	for (var i = 0; i < (Key.childCount - 1); i++)
 	{
 		Debug.DrawLine(Key.GetChild(i).transform.position,Key.GetChild(i + 1).transform.position, Color.red);
-		Key.GetChild(i).GetComponent.<Renderer>().enabled = false;
+		//Key.GetChild(i).GetComponent.<Renderer>().enabled = false;
 	}
 }
 

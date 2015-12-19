@@ -25,7 +25,15 @@ function Update()
 	if (isInside)
 		movePlayer();
 	if (Input.GetButton("Jump_Player1") && canChangeLvl)
+	{
+		DontDestroyOnLoad(GameObject.Find("Game_Group").gameObject);
+		//GameObject.Find("Player_UI").SetActive(true);
+		Camera.main.rect.width = 1;
+		Player1_movement.canMove = true;
+		Player2_movement.canMove = true;
+		end_Box_content.SetActive(false);
 		Application.LoadLevel(Application.loadedLevel + 1);
+		}
 
 }
 
@@ -57,7 +65,7 @@ function movePlayer()
 		{	
 			Debug.Log("Saut");
 			if (GameObject.Find("Player_UI"))
-				Destroy(GameObject.Find("Player_UI"));
+				GameObject.Find("Player_UI").SetActive(false);
 			timer += 0.05;
 			if (Camera.main.rect.width >= 0.50)
 				Camera.main.rect.width -= 0.01;
