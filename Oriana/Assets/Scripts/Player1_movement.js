@@ -3,15 +3,16 @@ static var hp = 15;
 static var end = 100.0;
 
 var Speed = 0.2;
+var explosionForce = 8.0;
 var scale;
-var TimeA = 0.00;
 
 var jumpForce = 0.0;
-var distToGround = 0.01;
 var rayPos : Vector2;
 var health_bar : GameObject;
 var end_bar : GameObject;
 
+private var TimeA = 0.00;
+private var distToGround = 0.01;
 private var Grounded = true;
 private var onLadder = false;
 private var isfalling = false;
@@ -22,9 +23,6 @@ static var rb : Rigidbody2D;
 private var Col : BoxCollider2D;
 
 var head;
-var Face1 : Sprite;
-var Face2 : Sprite;
-var Face3 : Sprite;
 
 function Start()
 {
@@ -45,6 +43,7 @@ function Update () {
 		isFalling();
 		LookingSide();
 		checkEnd(0);
+		checkHealth(0);
 		
 	}
 	
@@ -65,11 +64,8 @@ function Movement()
 {
 		if (Input.GetButton("Horizontal_Player1"))
 		{
-			head.sprite = Face1;
 			this.transform.position.x += Mathf.Clamp(Input.GetAxis("Horizontal_Player1"), -Speed, Speed);
 		}
-		if (!Input.GetButton("Horizontal_Player1") && Grounded)
-			head.sprite = Face2;
 		if (Input.GetButton("Jump_Player1") && Grounded && !onLadder)
 		{
 			rb.velocity = new Vector2(0,jumpForce);
@@ -111,11 +107,7 @@ function isFalling()
 	yield;
 	var PosB = this.transform.position.y;
 	if (PosA > PosB)
-	{
 		isfalling = true;
-		if (!onLadder)
-			head.sprite = Face3;
-	}
 	else
 		isfalling = false;
 	
@@ -169,7 +161,6 @@ function OnTriggerEnter2D(col : Collider2D)
      }
      if (col.gameObject.layer == LayerMask.NameToLayer("Plateform"))
      	transform.parent = null;
-
  }
 
  function OnCollisionEnter2D(col : Collision2D) {
@@ -182,15 +173,13 @@ function OnTriggerEnter2D(col : Collider2D)
 		}
 		else if (direction.y < 0f && col.gameObject.tag == "Enemy")
 			rb.velocity = new Vector2(-jumpForce,jumpForce);
-
-
 }
 
  
  function checkHealth(nb : int)
  {
  	Debug.Log(hp);
- 	if (nb < 0){
+ 	if (nb < 0 && hp > 0){
  		Debug.Log(this.gameObject.name + " a perdu " + (-nb) + " pv.");
  		rb.velocity = new Vector2(3,jumpForce);
  		}
@@ -201,7 +190,7 @@ function OnTriggerEnter2D(col : Collider2D)
  	if (hp > 15)
  		hp = 15;
  	if (hp <= -1)
- 		Destroy(this.gameObject);
+ 		killObject(0);
  }
  
  function checkEnd(nb)
@@ -216,4 +205,21 @@ function OnTriggerEnter2D(col : Collider2D)
  	if (TimeA >= 1 && end < 100.0)
  		end += 0.1;
 
+ }
+ 
+function killObject(i)
+ {	
+ 	rb.GetComponent.<Rigidbody2D>().freezeRotation = false;
+ 	canMove = false;
+ 	if (i < transform.childCount)
+ 	{
+ 		transform.GetChild(i).gameObject.AddComponent(Rigidbody2D);
+ 		transform.GetChild(i).gameObject.AddComponent(BoxCollider2D);
+ 		//transform.GetChild(i).GetComponent.<Rigidbody2D>().freezeRotation = true;
+ 		transform.GetChild(i).GetComponent.<Rigidbody2D>().velocity = new Vector2(Random.Range(-explosionForce,explosionForce),Random.Range(-explosionForce,explosionForce));
+ 		transform.GetChild(i).transform.parent = null;	
+ 		killObject(i);
+ 	}
+ 	/*if (i >= transform.childCount)
+ 		Destroy(gameObject);*/
  }

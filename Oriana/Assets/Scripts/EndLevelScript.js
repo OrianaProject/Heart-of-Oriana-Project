@@ -33,7 +33,7 @@ function Update()
 		Player2_movement.canMove = true;
 		end_Box_content.SetActive(false);
 		Application.LoadLevel(Application.loadedLevel + 1);
-		}
+	}
 
 }
 

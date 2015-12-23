@@ -1,5 +1,5 @@
 ﻿var canMove = true;
-var jumpToFirst = false;
+var jumpTo = false;
 var loop = false;
 var goForward = true;
 
@@ -27,10 +27,10 @@ function Update () {
 		oneDirection();
 		moveObj();
 	}
-	if (jumpToFirst && loop)
+	if (jumpTo && loop)
 	{
 		EditorUtility.DisplayDialog("OK TAMER","Va Niquer ta mere, je peux pas faire les deux en meme temps fdp !", "ok c'est bon, je savais pas");
-		jumpToFirst = false;
+		jumpTo = false;
 	}
 	debugPath();
 	//debugLol();
@@ -70,7 +70,7 @@ function moveObj()
 		step = 0.00;
 		if (goForward && Current_Key + 1 >= Key.childCount && loop)
 				Current_Key = 0;
-		else if (goForward && Current_Key + 1 >= Key.childCount && jumpToFirst)
+		else if (goForward && Current_Key + 1 >= Key.childCount && jumpTo)
 		{
 			Current_Key = 0;
 			Obj.transform.position = Key.GetChild(Current_Key).transform.position;
@@ -82,9 +82,9 @@ function moveObj()
 			
 		if (!goForward && Current_Key - 1 < 0 && loop)
 				Current_Key = Key.childCount;
-		else if (!goForward && Current_Key - 1 < 0 && jumpToFirst)
+		else if (!goForward && Current_Key - 1 < 0 && jumpTo)
 		{
-			Current_Key = Key.childCount;
+			Current_Key = Key.childCount - 1;
 			Obj.transform.position = Key.GetChild(Current_Key).transform.position;
 		}
 		if (!goForward)
@@ -94,8 +94,8 @@ function moveObj()
 
 function oneDirection()
 {
-	if (goForward && (Current_Key + 1) >= Key.childCount && !loop && !jumpToFirst)
+	if (goForward && (Current_Key + 1) >= Key.childCount && !loop && !jumpTo)
 			goForward = false;
-	else if (!goForward && (Current_Key) <= 0 && !loop && !jumpToFirst)
+	else if (!goForward && (Current_Key) <= 0 && !loop && !jumpTo)
 			goForward = true;
 }
