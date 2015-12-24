@@ -26,6 +26,8 @@ var head;
 
 function Start()
 {
+	canMove = true;
+	hp = 15;
 	head = this.transform.GetComponentInChildren.<SpriteRenderer>();
 	rb = GetComponent.<Rigidbody2D>();
 	Col = GetComponent.<BoxCollider2D>();
@@ -72,7 +74,7 @@ function Movement()
 			Grounded = false;
 		}
 		
-		if (Input.GetButtonDown("Crouch_Player1"))
+		if (Input.GetButtonDown("Crouch_Player1") && !onLadder)
 		{
 			Col.size.y = 0.5;
 			isCrouching = true;
@@ -220,6 +222,6 @@ function killObject(i)
  		transform.GetChild(i).transform.parent = null;	
  		killObject(i);
  	}
- 	/*if (i >= transform.childCount)
- 		Destroy(gameObject);*/
+ 	if (i >= transform.childCount)
+ 		Destroy(gameObject);
  }
