@@ -20,30 +20,16 @@ La maquette doit comporter au minimum :
 
  -Une mini cinematique avec bande son qui se declenche puis qui ramene le joueur au menu principal lorsque qu'il marche dans une zone delimitee
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Phase 2 - Conception - Etape par etape, repartition des taches pour chacune d'elles.
 
 -Histoire : redaction succinte de l'histoire du mode campagne, des evenements importants et des differents protagonistes, et de l'influence que le joueur peut avoir sur le deroulement des evenements.
 
--Niveaux : liens avec l'histoire, definition des bots (conception theorique uniquement : leurs emplacements, leurs actions, leurs items, etc.), environement et geographie (elements interactibles, nivelement, etc.), textures et bande sonore.
+Andras ---> Niveaux : liens avec l'histoire, definition des bots (conception theorique uniquement : leurs emplacements, leurs actions, leurs items, etc.), environement et geographie (elements interactibles, nivelement, etc.), textures et bande sonore environnementale.
 
-/*
--IA (js)
+Bobi ---> IA : diverses intelligences artificielles aux comportements adequat pour tel ou tel bot, skin, skills, densite, apparition et disparition, systeme d'aggro, niveau de reaction par rapport aux actions des joueurs, interractions avec les autres IA et l'environnement.
 
--Histoire (papier)
+Guillaume ---> PJs : controles des personnages, skills, experience, niveaux de joueurs et progression personnelle, interface et mecaniques des joueurs (barres d'experience, de vie, d'endurance, systeme monétaire, barre de skills, diverses fenetres, etc).
 
--Niveaux (unity)
-
--Items (unity/js/PS)
-
--Cinematiques (unity/js/son)
-
--Systeme de skills, experience, niveau de joueur (unity/js/PS)
-
--Bande sonore (audacity)
-
--Personnages joueurs (unity/js)
-
--Interface
-*/
+/* IA / Histoire / Niveaux / Items / Cinematiques / Systeme de skills, experience, niveau de joueur / Bande sonore / Personnages joueurs / Interface */
