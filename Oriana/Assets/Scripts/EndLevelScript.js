@@ -41,10 +41,7 @@ function OnTriggerEnter2D(coll : Collider2D) {
 	if (coll.name == "Player1" || coll.name == "Player2")
 	{
 		Player1_movement.canMove = false;
-		//Player1_movement.rb.isKinematic = true;
 		Player2_movement.canMove = false;
-		//Player2_movement.rb.isKinematic = true;
-		
 		isInside = true;
 	}
 }
@@ -59,11 +56,9 @@ function movePlayer()
 	{
 		P1.transform.position = Vector2.Lerp(P1.transform.position, endPos1.transform.position, Speed);
 		P2.transform.position = Vector2.Lerp(P2.transform.position, endPos2.transform.position, Speed);
-		Debug.Log("Movement");
 	}
 	else
-		{	
-			Debug.Log("Saut");
+		{
 			if (GameObject.Find("Player_UI"))
 				GameObject.Find("Player_UI").SetActive(false);
 			timer += 0.05;

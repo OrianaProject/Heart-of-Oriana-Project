@@ -103,11 +103,11 @@ function OnCollisionEnter2D(col : Collision2D) {
 		
 		var direction = body.transform.InverseTransformPoint (col.transform.position);
         
-        /*if (direction.y > 0f && col.gameObject.tag == "Player")
+        if (direction.y > 0f && col.gameObject.tag == "Player")
         {
         	dropItem();
 			Destroy(this.gameObject);
-		}*/
+		}
 		if ((direction.y < 0f || direction.x > 0f || direction.x < 0f) && col.gameObject.tag == "Player")
 		{	
 			col.gameObject.SendMessage("checkHealth", -1);

@@ -35,7 +35,6 @@ function Start()
 }
 
 function Update () {
-
 	if (canMove)
 	{	
 		setSpeed();
@@ -51,13 +50,11 @@ function Update () {
 	
 	if (Input.GetKey(KeyCode.R))
 		Application.LoadLevel("Game1");
-	if (Input.GetButtonDown("Screenshot"))
+	if (Input.GetKeyDown(KeyCode.U) && Input.GetKey(KeyCode.LeftCommand))
 	{
-		checkEnd(-5);
-	 	//Application.CaptureScreenshot("Screenshot.png");
-		//Debug.Log("SCREEN !");
+		Debug.Log("SCREENSHOT");
+		Application.CaptureScreenshot("Screenshot.png", 2);
 	}
-	 //transform.position = new Vector3(Mathf.Clamp(transform.position.x, cameraRect .xMin, cameraRect .xMax),Mathf.Clamp(transform.position.y, cameraRect .yMin, cameraRect .yMax),transform.position.z);
 	health_bar.gameObject.GetComponent("Slider").value = hp;
 	end_bar.gameObject.GetComponent("Slider").value = end;
 }
@@ -88,7 +85,7 @@ function Movement()
 		}
 		
 		if (Input.GetButton("Vertical_Player1") && onLadder)
-			this.transform.position.y += Mathf.Clamp(Input.GetAxis("Vertical_Player1"), -Speed, Speed);
+			this.transform.position.y += Mathf.Clamp(Input.GetAxis("Vertical_Player1"), -0.05, 0.05);
 }
 
 function setSpeed()
@@ -99,8 +96,6 @@ function setSpeed()
 			Speed = 0.05;
 		if (isCrouching && Grounded)
 			Speed = 0.02;
-		/*if (!isCrouching && Grounded)
-			Speed = 0.05;*/
 }
 
 function isFalling()
@@ -125,7 +120,6 @@ function isMoving()
 
 function isGrounded()
 {
-	//Debug.DrawRay(this.transform.position + rayPos, -Vector2.up);
 	if (Physics2D.Raycast(this.transform.position + rayPos, -Vector2.up, distToGround))
 		Grounded = true;
 	if (!(Physics2D.Raycast(this.transform.position + rayPos, -Vector2.up, distToGround)))
@@ -217,11 +211,14 @@ function killObject(i)
  	{
  		transform.GetChild(i).gameObject.AddComponent(Rigidbody2D);
  		transform.GetChild(i).gameObject.AddComponent(BoxCollider2D);
- 		//transform.GetChild(i).GetComponent.<Rigidbody2D>().freezeRotation = true;
  		transform.GetChild(i).GetComponent.<Rigidbody2D>().velocity = new Vector2(Random.Range(-explosionForce,explosionForce),Random.Range(-explosionForce,explosionForce));
  		transform.GetChild(i).transform.parent = null;	
  		killObject(i);
  	}
  	if (i >= transform.childCount)
+ 	{
  		Destroy(gameObject);
+ 		Destroy(health_bar);
+		Destroy(end_bar);
+ 	}
  }

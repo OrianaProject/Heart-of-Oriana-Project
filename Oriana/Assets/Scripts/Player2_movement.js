@@ -222,6 +222,10 @@ function killObject(i)
  		transform.GetChild(i).transform.parent = null;	
  		killObject(i);
  	}
- 	/*if (i >= transform.childCount)
- 		Destroy(gameObject);*/
+ 	if (i >= transform.childCount)
+ 	{
+ 		Destroy(gameObject);
+ 		Destroy(health_bar);
+		Destroy(end_bar);
+	}
  }

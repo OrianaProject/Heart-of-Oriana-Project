@@ -4,11 +4,8 @@
      \___/|_| |_\__,_|_||_\__,_| |_| |_| \___// \___\__|\__/
      -------------------------------------------------------
 
-
- Version 1.00
+Creation de la maquette
  -----------------------------------------------------------
-
-/*(Creation de la maquette )*\
 
  + Ajout de plateformes 
  + Ajout des mouvements de base
@@ -21,5 +18,5 @@
  + Ajout d'une barre de vie
  + Ajout d'une barre d'endurance
 
- Version 1.01
+ Version 1.00
  -----------------------------------------------------------

@@ -2,13 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyScript.js">
     <Files>
-      <File FileName="Assets/Scripts/Moving_Plateform.js" Line="95" Column="1" />
+      <File FileName="Assets/Scripts/Camera_follow.js" Line="16" Column="5" />
+      <File FileName="Assets/Scripts/Moving_Plateform.js" Line="61" Column="19" />
       <File FileName="Assets/Scripts/EndLevelScript.js" Line="1" Column="1" />
       <File FileName="Assets/checkScript.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player1_movement.js" Line="16" Column="29" />
+      <File FileName="Assets/Scripts/Player1_movement.js" Line="1" Column="1" />
       <File FileName="Assets/KillScript.js" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player2_movement.js" Line="197" Column="3" />
-      <File FileName="Assets/Scripts/EnemyScript.js" Line="81" Column="2" />
+      <File FileName="Assets/Scripts/Player2_movement.js" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnemyScript.js" Line="68" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
